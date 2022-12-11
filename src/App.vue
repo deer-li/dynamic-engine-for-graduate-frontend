@@ -14,9 +14,9 @@
         <!--<a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">GitHub</a>-->
 
         <div class="action-item">
-          <el-dropdown trigger="click" @command="handleLangCommand">
+          <el-dropdown  split-button type="primary" @command="handleLangCommand" >
             <span class="el-dropdown-link">
-              {{$route.params.lang == 'zh-CN' ? '简体中文' : 'English'}}<i class="iconfont icon-select"></i>
+              {{ $route.params.lang === 'zh-CN' ? '简体中文' : 'English' }}
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="zh-CN">简体中文</el-dropdown-item>
@@ -24,10 +24,8 @@
             </el-dropdown-menu>
           </el-dropdown>
         </div>
-
         <!--<a class="ad" href="http://form.xiaoyaoji.cn" target="_blank">{{$t('header.advanced')}}</a>-->
         <!--<a class="ad" href="http://www.xiaoyaoji.cn" target="_blank" v-if="$lang == 'zh-CN'">小幺鸡接口工具</a>-->
-
       </div>
     </div>
     <div  class="fm-container"><router-view/></div>
@@ -48,7 +46,7 @@ export default {
         /*这里的效果是和push差不多的作用，完成路由跳转，不过replace方法不会把路由压进history栈
         * http://localhost:8080/#/(command)/
         * */
-
+      //this.$route.name==index
       this.$router.replace({name: this.$route.name, params: {lang: command}})
     }
   }
@@ -107,8 +105,8 @@ export default {
       cursor: pointer;
       line-height: 50px;
       .el-dropdown{
-        // font-size: 16px;
-        // font-weight: 500;
+         font-size: 16px;
+         font-weight: 500;
       }
       .el-dropdown-link{
         cursor: pointer;
