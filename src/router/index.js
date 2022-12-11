@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 import Home from '../demo/Home.vue'
 import LanguageView from './LanguageView.vue'
-import WidgetConfig from "@/components/WidgetConfig";
 
 Vue.use(Router)
 
@@ -34,14 +33,14 @@ export default new Router({
       //我通过组件属性表和组件表来界定，然后何时触发子标签页中的属性列表，那要把三个div进行一个绑定
       //我这个路由就是想为属性设置面板中的组件属性来完成相关数据服务
 
-    {
-      path:'/hfuu/componentType/getComponentTypeInfo',
-      name:'widgetTypeConfig',
-      //现在认为path和component是紧密绑定在一起的，对于整体的组件和路由绑定
-      component:WidgetConfig,
-      //所以应该为整个面板配一个分组件，我现在先为后台消息的返回进行对象封装
-      //请求到数据后，先把数据放在指定位置
-
-    }
+    // {
+    //   path:'http://localhost:8081/hfuu/componentType/getComponentTypeInfo',
+    //   name:'widgetTypeConfig',
+    //   //现在认为path和component是紧密绑定在一起的，对于整体的组件和路由绑定
+    //   component:WidgetConfig,
+    //   //所以应该为整个面板配一个分组件，我现在先为后台消息的返回进行对象封装
+    //   //请求到数据后，先把数据放在指定位置
+    //
+    // }
   ]
 })

@@ -458,10 +458,6 @@ export default {
 
       this.generateRule()
     },
-    //添加本地方法直接获取组件的所有属性
-    getComponentType(){
-
-    }
   },
   watch: {
     'data.options.isRange': function(val) {

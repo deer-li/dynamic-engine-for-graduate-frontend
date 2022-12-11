@@ -64,7 +64,7 @@ export default {
     },
     config: {
       form: {
-        title: 'Form Attribute',
+        title: 'Form ',
         labelPosition: {
           title: 'Label Position',
           left: 'Left',
@@ -76,10 +76,10 @@ export default {
         customClass: 'Custom Class'
       },
       ui:{
-
+        title: 'FrameWork'
       },
       widget: {
-        title: 'Component Attribute',
+        title: 'Component ',
         model: 'ID',
         name: 'Name',
         width: 'Width',

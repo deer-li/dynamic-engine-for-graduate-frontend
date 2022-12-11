@@ -74,8 +74,7 @@
               <el-button v-if="clearable" type="text" size="medium" icon="el-icon-delete" @click="handleClear">{{$t('fm.actions.clear')}}</el-button>
               <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">{{$t('fm.actions.preview')}}</el-button>
               <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">{{$t('fm.actions.json')}}</el-button>
-              <!--<el-button v-if="" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJsons">{{$t('hahha')}}</el-button>-->
-              <!--<el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">{{$t('fm.actions.code')}}</el-button>-->
+              <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">{{$t('fm.actions.code')}}</el-button>
             </el-header>
             <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
               <widget-form v-if="!resetJson"  ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
@@ -87,11 +86,11 @@
               <el-header height="45px">
                 <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">{{$t('fm.config.widget.title')}}</div>
                 <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">{{$t('fm.config.form.title')}}</div>
-                <div class="config-tab" :class="{active: configTab=='ui'}" @click="handleConfigSelect('ui')">{{$t('fm.config.ui.title')}}</div>
+                <div class="config-tab" :class="{active: configTab=='ui'}" @click="getComponentType('ui')">{{$t('fm.config.ui.title')}}</div>
               </el-header>
               <el-main class="config-content">
                 <widget-config v-show="configTab=='widget'" :data="widgetFormSelect"></widget-config>
-                <ui-pattern v-show="configTab=='ui'" :data="ui"></ui-pattern>
+                <ui-pattern v-show="configTab=='ui'" v-bind:ui="ui"></ui-pattern>
                 <form-config v-show="configTab=='form'" :data="widgetForm.config"></form-config>
               </el-main>
             </el-container>
@@ -188,6 +187,7 @@ import {basicComponents, layoutComponents, advanceComponents} from './components
 import {loadJs, loadCss} from '../util/index.js'
 import request from '../util/request.js'
 import generateCode from './generateCode.js'
+import {getComponentType} from '@/api/api.js'
 
 export default {
   name: 'fm-making-form',
@@ -251,7 +251,7 @@ export default {
       },
       configTab: 'widget',
       widgetFormSelect: null,
-      ui:null,
+      ui:[],
       previewVisible: false,
       jsonVisible: false,
       codeVisible: false,
@@ -296,6 +296,9 @@ export default {
       codeActiveName: 'vue',
     }
   },
+  created() {
+    this.getComponentType()
+  },
   mounted () {
     this._loadComponents()
   },
@@ -324,6 +327,7 @@ export default {
       window.location.href = 'https://github.com/GavinZhuLei/vue-form-making'
     },
     handleConfigSelect (value) {
+
       this.configTab = value
     },
     handleMoveEnd (evt) {
@@ -453,6 +457,17 @@ export default {
     },
     handleDataChange (field, value, data) {
       console.log(field, value, data)
+    },
+    //完成获取后端数据展示在前端的数据测试
+    getComponentType(value){
+      getComponentType().then(response=>{
+        this.configTab=value
+        this.ui=response.data
+        console.log('componentType--->',response.data);
+        this.isShow=true
+      }).catch(error => {
+        console.log(error)
+      })
     }
   },
   watch: {

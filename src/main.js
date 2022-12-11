@@ -11,6 +11,7 @@ import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 Vue.use(VueI18n)
 Vue.use(VueEditor)
 
+
 const messages = {
   'en-US': {
     header: {
