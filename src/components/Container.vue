@@ -6,64 +6,64 @@
           <el-aside width="250px">
             <div class="components-list">
               <template v-if="basicFields.length">
-                <div class="widget-cate">{{$t('fm.components.basic.title')}}</div>
-                <draggable tag="ul" :list="basicComponents" 
-                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-                  @end="handleMoveEnd"
-                  @start="handleMoveStart"
-                  :move="handleMove"
+                <div class="widget-cate">{{ $t('fm.components.basic.title') }}</div>
+                <draggable tag="ul" :list="basicComponents"
+                           v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                           @end="handleMoveEnd"
+                           @start="handleMoveStart"
+                           :move="handleMove"
                 >
                   <template v-for="(item, index) in basicComponents">
-                    <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label" :class="{'no-put': item.type == 'divider'}" :key="index">
+                    <li v-if="basicFields.indexOf(item.type)>=0" class="form-edit-widget-label"
+                        :class="{'no-put': item.type == 'divider'}" :key="index">
                       <a>
                         <i class="icon iconfont" :class="item.icon"></i>
-                        <span>{{item.name}}</span>
+                        <span>{{ item.name }}</span>
                       </a>
                     </li>
-                  </template>                
-                </draggable>
-              </template>            
-              <template v-if="advanceFields.length">
-                <div class="widget-cate">{{$t('fm.components.advance.title')}}</div>
-                <draggable tag="ul" :list="advanceComponents" 
-                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-                  @end="handleMoveEnd"
-                  @start="handleMoveStart"
-                  :move="handleMove"
-                >
-                  <template v-for="(item, index) in advanceComponents">
-                    <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label" :class="{'no-put': item.type == 'table'}" :key="index">
-                      <a>
-                        <i class="icon iconfont" :class="item.icon"></i>
-                        <span>{{item.name}}</span>
-                      </a>
-                    </li>                  
                   </template>
                 </draggable>
               </template>
-
-              
+              <template v-if="advanceFields.length">
+                <div class="widget-cate">{{ $t('fm.components.advance.title') }}</div>
+                <draggable tag="ul" :list="advanceComponents"
+                           v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                           @end="handleMoveEnd"
+                           @start="handleMoveStart"
+                           :move="handleMove"
+                >
+                  <template v-for="(item, index) in advanceComponents">
+                    <li v-if="advanceFields.indexOf(item.type) >= 0" class="form-edit-widget-label"
+                        :class="{'no-put': item.type == 'table'}" :key="index">
+                      <a>
+                        <i class="icon iconfont" :class="item.icon"></i>
+                        <span>{{ item.name }}</span>
+                      </a>
+                    </li>
+                  </template>
+                </draggable>
+              </template>
               <template v-if="layoutFields.length">
-                <div class="widget-cate">{{$t('fm.components.layout.title')}}</div>
-                <draggable tag="ul" :list="layoutComponents" 
-                  v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
-                  @end="handleMoveEnd"
-                  @start="handleMoveStart"
-                  :move="handleMove"
+                <div class="widget-cate">{{ $t('fm.components.layout.title') }}</div>
+                <draggable tag="ul" :list="layoutComponents"
+                           v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
+                           @end="handleMoveEnd"
+                           @start="handleMoveStart"
+                           :move="handleMove"
                 >
                   <template v-for="(item, index) in layoutComponents">
                     <li v-if="layoutFields.indexOf(item.type) >=0" class="form-edit-widget-label no-put" :key="index">
                       <a>
                         <i class="icon iconfont" :class="item.icon"></i>
-                        <span>{{item.name}}</span>
+                        <span>{{ item.name }}</span>
                       </a>
                     </li>
-                  </template>               
+                  </template>
                 </draggable>
               </template>
-              
+
             </div>
-            
+
           </el-aside>
 
           <el-container class="center-container" direction="vertical">
@@ -71,22 +71,37 @@
               <slot name="action">
               </slot>
               <!--<el-button v-if="upload" type="text" size="medium" icon="el-icon-upload2" @click="handleUpload">{{$t('fm.actions.import')}}</el-button>-->
-              <el-button v-if="clearable" type="text" size="medium" icon="el-icon-delete" @click="handleClear">{{$t('fm.actions.clear')}}</el-button>
-              <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">{{$t('fm.actions.preview')}}</el-button>
-              <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">{{$t('fm.actions.json')}}</el-button>
-              <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">{{$t('fm.actions.code')}}</el-button>
+              <el-button v-if="clearable" type="text" size="medium" icon="el-icon-delete" @click="handleClear">
+                {{ $t('fm.actions.clear') }}
+              </el-button>
+              <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">
+                {{ $t('fm.actions.preview') }}
+              </el-button>
+              <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets"
+                         @click="handleGenerateJson">{{ $t('fm.actions.json') }}
+              </el-button>
+              <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document"
+                         @click="handleGenerateCode">{{ $t('fm.actions.code') }}
+              </el-button>
             </el-header>
             <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
-              <widget-form v-if="!resetJson"  ref="widgetForm" :data="widgetForm" :select.sync="widgetFormSelect"></widget-form>
+              <widget-form v-if="!resetJson" ref="widgetForm" :data="widgetForm"
+                           :select.sync="widgetFormSelect"></widget-form>
             </el-main>
           </el-container>
-          
+
           <el-aside class="widget-config-container">
             <el-container>
               <el-header height="45px">
-                <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">{{$t('fm.config.widget.title')}}</div>
-                <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">{{$t('fm.config.form.title')}}</div>
-                <div class="config-tab" :class="{active: configTab=='ui'}" @click="getComponentType('ui')">{{$t('fm.config.ui.title')}}</div>
+                <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">
+                  {{ $t('fm.config.widget.title') }}
+                </div>
+                <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">
+                  {{ $t('fm.config.form.title') }}
+                </div>
+                <div class="config-tab" :class="{active: configTab=='ui'}" @click="getComponentType('ui')">
+                  {{ $t('fm.config.ui.title') }}
+                </div>
               </el-header>
               <el-main class="config-content">
                 <widget-config v-show="configTab=='widget'" :data="widgetFormSelect"></widget-config>
@@ -94,75 +109,80 @@
                 <form-config v-show="configTab=='form'" :data="widgetForm.config"></form-config>
               </el-main>
             </el-container>
-            
+
           </el-aside>
 
           <cus-dialog
-            :visible="previewVisible"
-            @on-close="previewVisible = false"
-            ref="widgetPreview"
-            width="1000px"
-            form
+              :visible="previewVisible"
+              @on-close="previewVisible = false"
+              ref="widgetPreview"
+              width="1000px"
+              form
           >
-            <generate-form insite="true" @on-change="handleDataChange" v-if="previewVisible" :data="widgetForm" :value="widgetModels" :remote="remoteFuncs" ref="generateForm">
+            <generate-form insite="true" @on-change="handleDataChange" v-if="previewVisible" :data="widgetForm"
+                           :value="widgetModels" :remote="remoteFuncs" ref="generateForm">
 
               <template v-slot:blank="scope">
-                Width <el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
-                Height <el-input v-model="scope.model.blank.height" style="width: 100px"></el-input>
+                Width
+                <el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>
+                Height
+                <el-input v-model="scope.model.blank.height" style="width: 100px"></el-input>
               </template>
             </generate-form>
 
             <template slot="action">
               <!--获取数据-->
-              <el-button type="primary" @click="handleTest">{{$t('fm.actions.getData')}}</el-button>
+              <el-button type="primary" @click="handleTest">{{ $t('fm.actions.getData') }}</el-button>
               <!--重置-->
-              <el-button @click="handleReset">{{$t('fm.actions.reset')}}</el-button>
+              <el-button @click="handleReset">{{ $t('fm.actions.reset') }}</el-button>
             </template>
           </cus-dialog>
 
           <cus-dialog
-            :visible="uploadVisible"
-            @on-close="uploadVisible = false"
-            @on-submit="handleUploadJson"
-            ref="uploadJson"
-            width="800px"
-            form
+              :visible="uploadVisible"
+              @on-close="uploadVisible = false"
+              @on-submit="handleUploadJson"
+              ref="uploadJson"
+              width="800px"
+              form
           >
             <el-alert type="info" :title="$t('fm.description.uploadJsonInfo')"></el-alert>
-            <div id="uploadeditor" style="height: 400px;width: 100%;">{{jsonEg}}</div>
+            <div id="uploadeditor" style="height: 400px;width: 100%;">{{ jsonEg }}</div>
           </cus-dialog>
 
           <cus-dialog
-            :visible="jsonVisible"
-            @on-close="jsonVisible = false"
-            ref="jsonPreview"
-            width="800px"
-            form
+              :visible="jsonVisible"
+              @on-close="jsonVisible = false"
+              ref="jsonPreview"
+              width="800px"
+              form
           >
-            
-            <div id="jsoneditor" style="height: 400px;width: 100%;">{{jsonTemplate}}</div>
-            
+
+            <div id="jsoneditor" style="height: 400px;width: 100%;">{{ jsonTemplate }}</div>
+
             <template slot="action">
-              <el-button type="primary" class="json-btn" :data-clipboard-text="jsonCopyValue">{{$t('fm.actions.copyData')}}</el-button>
+              <el-button type="primary" class="json-btn" :data-clipboard-text="jsonCopyValue">
+                {{ $t('fm.actions.copyData') }}
+              </el-button>
 
             </template>
           </cus-dialog>
 
           <cus-dialog
-            :visible="codeVisible"
-            @on-close="codeVisible = false"
-            ref="codePreview"
-            width="800px"
-            form
-            :action="false"
+              :visible="codeVisible"
+              @on-close="codeVisible = false"
+              ref="codePreview"
+              width="800px"
+              form
+              :action="false"
           >
             <!-- <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div> -->
             <el-tabs type="border-card" style="box-shadow: none;" v-model="codeActiveName">
               <el-tab-pane label="Vue Component" name="vue">
-                <div id="vuecodeeditor" style="height: 500px; width: 100%;">{{vueTemplate}}</div>
+                <div id="vuecodeeditor" style="height: 500px; width: 100%;">{{ vueTemplate }}</div>
               </el-tab-pane>
               <el-tab-pane label="HTML" name="html">
-                <div id="codeeditor" style="height: 500px; width: 100%;">{{htmlTemplate}}</div>
+                <div id="codeeditor" style="height: 500px; width: 100%;">{{ htmlTemplate }}</div>
               </el-tab-pane>
             </el-tabs>
           </cus-dialog>
@@ -215,7 +235,7 @@ export default {
     },
 
     upload: {
-      type: Boolean, 
+      type: Boolean,
       default: false
     },
     clearable: {
@@ -232,10 +252,10 @@ export default {
     },
     layoutFields: {
       type: Array,
-      default: () => ['grid','divider']
+      default: () => ['grid', 'divider']
     }
   },
-  data () {
+  data() {
     return {
       basicComponents,
       layoutComponents,
@@ -251,13 +271,13 @@ export default {
       },
       configTab: 'widget',
       widgetFormSelect: null,
-      ui:[],
+      ui: [],
       previewVisible: false,
       jsonVisible: false,
       codeVisible: false,
       uploadVisible: false,
       remoteFuncs: {
-        func_test (resolve) {
+        func_test(resolve) {
           setTimeout(() => {
             const options = [
               {id: '1', name: '1111'},
@@ -268,12 +288,12 @@ export default {
             resolve(options)
           }, 2000)
         },
-        funcGetToken (resolve) {
+        funcGetToken(resolve) {
           request.get('http://tools-server.xiaoyaoji.cn/api/uptoken').then(res => {
             resolve(res.uptoken)
           })
         },
-        upload_callback (response, file, fileList) {
+        upload_callback(response, file, fileList) {
           console.log('callback', response, file, fileList)
         }
       },
@@ -299,11 +319,11 @@ export default {
   created() {
     this.getComponentType()
   },
-  mounted () {
+  mounted() {
     this._loadComponents()
   },
   methods: {
-    _loadComponents () {
+    _loadComponents() {
       this.basicComponents = this.basicComponents.map(item => {
         return {
           ...item,
@@ -323,59 +343,60 @@ export default {
         }
       })
     },
-    handleGoGithub () {
+    handleGoGithub() {
       window.location.href = 'https://github.com/GavinZhuLei/vue-form-making'
     },
-    handleConfigSelect (value) {
+    handleConfigSelect(value) {
 
       this.configTab = value
     },
-    handleMoveEnd (evt) {
+    handleMoveEnd(evt) {
       console.log('end', evt)
     },
-    handleMoveStart ({oldIndex}) {
+    handleMoveStart({oldIndex}) {
       console.log('start', oldIndex, this.basicComponents)
     },
-    handleMove () {
+    handleMove() {
       return true
     },
-    handlePreview () {
+    handlePreview() {
       console.log(this.widgetForm)
       this.previewVisible = true
     },
-    handleTest () {
+    handleTest() {
       this.$refs.generateForm.getData().then(data => {
-        this.$alert(data, '').catch(e=>{})
+        this.$alert(data, '').catch(e => {
+        })
         this.$refs.widgetPreview.end()
       }).catch(e => {
         this.$refs.widgetPreview.end()
       })
     },
-    handleReset () {
+    handleReset() {
       this.$refs.generateForm.reset()
     },
 
-    handleGenerateJsons(){
-        this.jsonVisible = true
-        this.jsonTemplate = this.widgetForm
+    handleGenerateJsons() {
+      this.jsonVisible = true
+      this.jsonTemplate = this.widgetForm
 
-        console.log(JSON.stringify(this.widgetForm))
-        this.$nextTick(() => {
+      console.log(JSON.stringify(this.widgetForm))
+      this.$nextTick(() => {
 
-            const editor = ace.edit('jsoneditor')
-            editor.session.setMode("ace/mode/json")
+        const editor = ace.edit('jsoneditor')
+        editor.session.setMode("ace/mode/json")
 
-            if (!this.jsonClipboard) {
-                this.jsonClipboard = new Clipboard('.json-btn')
-                this.jsonClipboard.on('success', (e) => {
-                    this.$message.success(this.$t('fm.message.copySuccess'))
-                })
-            }
-            this.jsonCopyValue = JSON.stringify(this.widgetForm)
-        })
+        if (!this.jsonClipboard) {
+          this.jsonClipboard = new Clipboard('.json-btn')
+          this.jsonClipboard.on('success', (e) => {
+            this.$message.success(this.$t('fm.message.copySuccess'))
+          })
+        }
+        this.jsonCopyValue = JSON.stringify(this.widgetForm)
+      })
     },
 
-    handleGenerateJson () {
+    handleGenerateJson() {
       this.jsonVisible = true
       this.jsonTemplate = this.widgetForm
       console.log(JSON.stringify(this.widgetForm))
@@ -393,7 +414,7 @@ export default {
         this.jsonCopyValue = JSON.stringify(this.widgetForm)
       })
     },
-    handleGenerateCode () {
+    handleGenerateCode() {
 
       this.codeVisible = true
       this.htmlTemplate = generateCode(JSON.stringify(this.widgetForm), 'html')
@@ -406,14 +427,14 @@ export default {
         vueeditor.session.setMode("ace/mode/html")
       })
     },
-    handleUpload () {
+    handleUpload() {
       this.uploadVisible = true
       this.$nextTick(() => {
         this.uploadEditor = ace.edit('uploadeditor')
         this.uploadEditor.session.setMode("ace/mode/json")
       })
     },
-    handleUploadJson () {
+    handleUploadJson() {
       try {
         this.setJSON(JSON.parse(this.uploadEditor.getValue()))
         this.uploadVisible = false
@@ -422,7 +443,7 @@ export default {
         this.$refs.uploadJson.end()
       }
     },
-    handleClear () {
+    handleClear() {
       this.widgetForm = {
         list: [],
         config: {
@@ -435,36 +456,36 @@ export default {
 
       this.widgetFormSelect = {}
     },
-    clear () {
+    clear() {
       this.handleClear()
     },
-    getJSON () {
+    getJSON() {
       return this.widgetForm
     },
-    getHtml () {
+    getHtml() {
       return generateCode(JSON.stringify(this.widgetForm))
     },
-    setJSON (json) {
+    setJSON(json) {
       this.widgetForm = json
 
-      if (json.list.length> 0) {
+      if (json.list.length > 0) {
         this.widgetFormSelect = json.list[0]
       }
     },
-    handleInput (val) {
+    handleInput(val) {
       console.log(val)
       this.blank = val
     },
-    handleDataChange (field, value, data) {
+    handleDataChange(field, value, data) {
       console.log(field, value, data)
     },
     //完成获取后端数据展示在前端的数据测试
-    getComponentType(value){
-      getComponentType().then(response=>{
-        this.configTab=value
-        this.ui=response.data
-        console.log('componentType--->',response.data);
-        this.isShow=true
+    getComponentType(value) {
+      getComponentType().then(response => {
+        this.configTab = value
+        this.ui = response.data
+        console.log('componentType--->', response.data);
+        this.isShow = true
       }).catch(error => {
         console.log(error)
       })

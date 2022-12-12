@@ -1,7 +1,7 @@
 <template>
   <!-- 现在什么都不用做，只要把表单做出来，然后提交给后台保存就好了-->
   <div>
-    <el-form  ref="el-form" :model="form">
+    <el-form  ref="el-form01" :model="form">
       <el-row class="el">
         <el-col :span="6"><span class="s1">属性cid</span></el-col>
         <el-col :span="18">
@@ -25,7 +25,7 @@
       <br>
       <span>
         <el-button type="primary" class="el-button01" @click="onSubmit">提交</el-button>
-        <el-button type="primary" class="el-button02">重置</el-button>
+        <el-button type="primary" class="el-button02" @click="onReset">重置</el-button>
       </span>
     </el-form>
   </div>
@@ -60,8 +60,12 @@ export default {
       //const parse = JSON.parse(componentByType);
       console.log('data====>',componentByType)
       addComponentType(componentByType).then(response=>{
-
+            console.log(response.data)
+            alert(response.data);
       })
+    },
+    onReset(){
+      this.$ref['el-form01'].resetFields();
     }
   }
 
