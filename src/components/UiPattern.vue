@@ -1,7 +1,11 @@
 <template>
   <!-- 现在什么都不用做，只要把表单做出来，然后提交给后台保存就好了-->
   <div>
+<<<<<<< HEAD
     <el-form  ref="el-form01" :model="form">
+=======
+    <el-form  ref="el-form" :model="form">
+>>>>>>> master
       <el-row class="el">
         <el-col :span="6"><span class="s1">属性cid</span></el-col>
         <el-col :span="18">
@@ -25,7 +29,11 @@
       <br>
       <span>
         <el-button type="primary" class="el-button01" @click="onSubmit">提交</el-button>
+<<<<<<< HEAD
         <el-button type="primary" class="el-button02" @click="onReset">重置</el-button>
+=======
+        <el-button type="primary" class="el-button02">重置</el-button>
+>>>>>>> master
       </span>
     </el-form>
   </div>
@@ -38,8 +46,12 @@ export default {
   name: "UiPattern",
   props: {
     ui: {
+<<<<<<< HEAD
       type: Array,
       required: true
+=======
+
+>>>>>>> master
     }
   },
   data() {
@@ -52,7 +64,11 @@ export default {
     }
   },
   mounted() {
+<<<<<<< HEAD
     this.onSubmit();
+=======
+
+>>>>>>> master
   },
   methods:{
     onSubmit(){
@@ -60,12 +76,21 @@ export default {
       //const parse = JSON.parse(componentByType);
       console.log('data====>',componentByType)
       addComponentType(componentByType).then(response=>{
+<<<<<<< HEAD
             console.log(response.data)
             alert(response.data);
       })
     },
     onReset(){
       this.$ref['el-form01'].resetFields();
+=======
+          if (response.status==0){
+            this.$message.success("添加数据成功");
+          }else {
+            this.$message.error("添加数据失败");
+          }
+      })
+>>>>>>> master
     }
   }
 
