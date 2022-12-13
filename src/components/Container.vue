@@ -187,7 +187,6 @@ import {basicComponents, layoutComponents, advanceComponents} from './components
 import {loadJs, loadCss} from '../util/index.js'
 import request from '../util/request.js'
 import generateCode from './generateCode.js'
-import {getComponentType} from '@/api/api.js'
 
 export default {
   name: 'fm-making-form',
@@ -295,9 +294,6 @@ export default {
       }`,
       codeActiveName: 'vue',
     }
-  },
-  created() {
-    this.getComponentType()
   },
   mounted () {
     this._loadComponents()
@@ -460,14 +456,7 @@ export default {
     },
     //完成获取后端数据展示在前端的数据测试
     getComponentType(value){
-      getComponentType().then(response=>{
-        this.configTab=value
-        this.ui=response.data
-        console.log('componentType--->',response.data);
-        this.isShow=true
-      }).catch(error => {
-        console.log(error)
-      })
+      this.configTab=value;
     }
   },
   watch: {

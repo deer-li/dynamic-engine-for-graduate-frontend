@@ -38,8 +38,7 @@ export default {
   name: "UiPattern",
   props: {
     ui: {
-      type: Array,
-      required: true
+
     }
   },
   data() {
@@ -52,7 +51,7 @@ export default {
     }
   },
   mounted() {
-    this.onSubmit();
+
   },
   methods:{
     onSubmit(){
@@ -60,7 +59,11 @@ export default {
       //const parse = JSON.parse(componentByType);
       console.log('data====>',componentByType)
       addComponentType(componentByType).then(response=>{
-
+          if (response.status==0){
+            this.$message.success("添加数据成功");
+          }else {
+            this.$message.error("添加数据失败");
+          }
       })
     }
   }
