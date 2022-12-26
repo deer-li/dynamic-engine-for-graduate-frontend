@@ -68,8 +68,6 @@
 
           <el-container class="center-container" direction="vertical">
             <el-header class="btn-bar" style="height: 45px;">
-              <slot name="action">
-              </slot>
               <!--<el-button v-if="upload" type="text" size="medium" icon="el-icon-upload2" @click="handleUpload">{{$t('fm.actions.import')}}</el-button>-->
               <el-button v-if="clearable" type="text" size="medium" icon="el-icon-delete" @click="handleClear">{{$t('fm.actions.clear')}}</el-button>
               <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">{{$t('fm.actions.preview')}}</el-button>
