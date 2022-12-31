@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // import axios from 'axios'
 // import {Message ,MessageBox,Notification} from "element-ui";
@@ -124,11 +125,13 @@
 //
 // export default service
 >>>>>>> master
+=======
+>>>>>>> master
 import axios from 'axios'
 export function request(config) {
     const instance = axios.create({
         //地址
-        baseURL: 'http://localhost:8081/',
+        baseURL: process.env.VUE_APP_BASE_API,
         //超时设置
         timeout: 10000
     })

@@ -7,21 +7,21 @@
     <el-form  ref="el-form" :model="form">
 >>>>>>> master
       <el-row class="el">
-        <el-col :span="6"><span class="s1">属性cid</span></el-col>
+        <el-col :span="6"><span class="s1">属性id</span></el-col>
         <el-col :span="18">
           <el-input placeholder="please input cid" v-model="form.cid"></el-input>
         </el-col>
       </el-row>
       <br>
       <el-row class="e1">
-        <el-col :span="6"><span class="s1">属性cid</span></el-col>
+        <el-col :span="6"><span class="s1">属性名</span></el-col>
         <el-col :span="18">
           <el-input placeholder="please input cid" v-model="form.cname"></el-input>
         </el-col>
       </el-row>
       <br>
       <el-row class="e1">
-        <el-col :span="6"><span class="s1">属性cid</span></el-col>
+        <el-col :span="6"><span class="s1">创建时间</span></el-col>
         <el-col :span="18">
           <el-date-picker v-model="form.createTime"></el-date-picker>
         </el-col>
